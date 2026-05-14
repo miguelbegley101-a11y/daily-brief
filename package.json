@@ -1,0 +1,13 @@
+{
+  "name": "daily-brief-fullstack",
+  "private": true,
+  "version": "2.0.0",
+  "description": "React + Spring Boot daily news brief portfolio project.",
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "mvn -f backend/pom.xml spring-boot:run",
+    "build:frontend": "npm --prefix frontend run build",
+    "build:backend": "mvn -f backend/pom.xml package",
+    "build": "npm --prefix frontend run build && mvn -f backend/pom.xml package"
+  }
+}
