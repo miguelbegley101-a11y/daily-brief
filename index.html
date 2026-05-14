@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="每日简报是一个可部署到 GitHub Pages 的中文新闻汇总作品站，支持分类筛选、搜索、主题切换和归档浏览。"
+    />
+    <title>每日简报 | Daily Brief</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" aria-label="站点导航">
+        <a class="brand" href="#" aria-label="每日简报首页">
+          <span class="brand-mark">DB</span>
+          <span>
+            <strong>每日简报</strong>
+            <small>Daily Brief</small>
+          </span>
+        </a>
+
+        <nav class="nav-links" aria-label="主导航">
+          <a href="#today">今日</a>
+          <a href="#categories">分类</a>
+          <a href="#archive">归档</a>
+          <a href="#workflow">自动化</a>
+        </nav>
+
+        <div class="top-actions">
+          <span class="today-date" id="todayDate">2026-05-14</span>
+          <button class="icon-button" id="searchFocus" aria-label="聚焦搜索">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.4-3.4"></path>
+            </svg>
+          </button>
+          <button class="icon-button" id="themeToggle" aria-label="切换深浅色主题">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 3a6.6 6.6 0 0 0 8.6 8.6 8 8 0 1 1-8.6-8.6Z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid" id="today" aria-labelledby="pageTitle">
+          <div class="lead-panel">
+            <div class="section-label">今日主线</div>
+            <h1 id="pageTitle">用十分钟读完今天值得追踪的新闻脉络</h1>
+            <p>
+              聚合国际、科技、财经、社会与文化资讯，把“发生了什么、为什么重要、接下来关注什么”压缩成可快速浏览的每日简报。
+            </p>
+
+            <div class="lead-story" data-category="world">
+              <img
+                src="./assets/editorial-desk.png"
+                alt="新闻简报工作台视觉图，包含报纸、手机图表和世界地图"
+              />
+              <div class="lead-copy">
+                <span class="story-kicker">World · 08:30</span>
+                <h2>多国会议聚焦供应链韧性，能源与芯片议题继续升温</h2>
+                <p>
+                  今日国际议程围绕关键矿产、港口运输和区域安全展开，市场正在观察政策文本是否会转化为新的产业补贴和贸易限制。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <aside class="brief-panel" aria-label="今日六十秒摘要">
+            <div class="panel-heading">
+              <div>
+                <span class="section-label">60 秒摘要</span>
+                <h2>今日速读</h2>
+              </div>
+              <span class="freshness">已更新</span>
+            </div>
+
+            <ol class="pulse-list">
+              <li><strong>宏观：</strong>亚洲主要股指分化，投资者等待新一轮通胀数据。</li>
+              <li><strong>科技：</strong>端侧 AI、开源模型和芯片供给仍是行业主线。</li>
+              <li><strong>社会：</strong>多地发布高温与强降雨提示，城市应急能力受关注。</li>
+              <li><strong>文化：</strong>暑期档内容竞争提前升温，线下演出复苏延续。</li>
+            </ol>
+
+            <div class="metric-strip">
+              <span><strong id="storyCount">12</strong>条精选</span>
+              <span><strong>5</strong>个分类</span>
+              <span><strong>10m</strong>阅读</span>
+            </div>
+          </aside>
+        </section>
+
+        <section class="digest-tools" id="categories" aria-label="筛选和搜索新闻">
+          <div class="filter-row" id="categoryFilters" role="tablist" aria-label="新闻分类">
+            <button class="filter-chip active" data-category="all" type="button">全部</button>
+            <button class="filter-chip" data-category="world" type="button">国际</button>
+            <button class="filter-chip" data-category="tech" type="button">科技</button>
+            <button class="filter-chip" data-category="finance" type="button">财经</button>
+            <button class="filter-chip" data-category="society" type="button">社会</button>
+            <button class="filter-chip" data-category="culture" type="button">文化</button>
+          </div>
+
+          <label class="search-box" for="newsSearch">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-3.4-3.4"></path>
+            </svg>
+            <input id="newsSearch" type="search" placeholder="搜索标题、来源或关键词" autocomplete="off" />
+          </label>
+        </section>
+
+        <section class="content-grid">
+          <div class="story-board" aria-live="polite">
+            <div class="board-head">
+              <div>
+                <span class="section-label">精选列表</span>
+                <h2>今日新闻</h2>
+              </div>
+              <button class="text-button" id="resetFilters" type="button">重置筛选</button>
+            </div>
+            <div class="story-list" id="storyList"></div>
+            <p class="empty-state" id="emptyState" hidden>没有匹配的新闻，换个关键词试试。</p>
+          </div>
+
+          <aside class="right-rail">
+            <section class="rail-section">
+              <div class="panel-heading compact">
+                <h2>趋势标签</h2>
+                <span>实时</span>
+              </div>
+              <div class="tag-cloud" id="tagCloud"></div>
+            </section>
+
+            <section class="rail-section" id="archive">
+              <div class="panel-heading compact">
+                <h2>归档日历</h2>
+                <span>May</span>
+              </div>
+              <div class="calendar-grid" aria-label="新闻归档日历">
+                <button type="button">10</button>
+                <button type="button">11</button>
+                <button type="button">12</button>
+                <button type="button">13</button>
+                <button class="active-day" type="button">14</button>
+              </div>
+            </section>
+
+            <section class="rail-section" id="workflow">
+              <div class="panel-heading compact">
+                <h2>后续自动化</h2>
+                <span>Temporal</span>
+              </div>
+              <ul class="workflow-list">
+                <li>定时拉取新闻源</li>
+                <li>AI 摘要与去重</li>
+                <li>人工审阅后发布</li>
+              </ul>
+            </section>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
